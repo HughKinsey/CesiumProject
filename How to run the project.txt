@@ -1,0 +1,46 @@
+I have made the application able to take in user inputs. You must put in a path to your Pre and Post data, as well as the points for your Point A and Point B.
+
+To run the application I would open the CesiumProject Sln and run the application.
+
+You can also run the CesiumProject.exe in the release folder (CesiumProject\CesiumProject\x64\Release) and input the values below there.
+
+
+Sample Run Data
+Pre File Path: C:/Users/HughKinsey/Desktop/CesiumProject/CesiumProject/Data/pre.data
+Post File Path: C:/Users/HughKinsey/Desktop/CesiumProject/CesiumProject/Data/post.data
+Point A: 0 0
+Point B: 100 100
+
+Time complexity is: O(NlogN)
+
+Time Spent:
+I spent about 3 hours on the main project, and then a little more to make sure the inputs were easy to use for someone else running the application.
+
+My approach:
+My first approach was kind of simplistic, I tried just using a straight line approximation and worked to account for height differences to calculate the surface distance.
+However that was really inefficient, and I realizes that navigating in the real world isnt a straight line type if problem, 
+so I decided to try and implement Dijkstra's algorithm because it is useful for finding the best path in a grid.
+
+Difficulties:
+1. I ran into some issues when handling diagonal moves, until I realized that the step size should be multiplied by the squareroot of 2.
+
+Assumptions
+Below are a few of my assumptions:
+1. The only factor affecting the distance between points is the elevation change (dz) and the horizontal distance (dxy), which are calculated based on the terrain's height map.
+
+2. The heightmap is a 2D grid, with each element representing the height of the terrain at a given (x, y) coordinate.
+
+3. The algorithm ensures that all nodes processed by the priority queue lie within the grid boundaries.
+
+
+
+Limitations
+Below are a few of the limitations:
+
+1. I used Dijkstra’s algorithm to find the shortest path, it assumes that the grid is entirely passable and does not account for obstacles or impassable areas (e.g., walls, water bodies, cliffs, etc.).
+
+2. The algorithm uses a 2D grid to represent the terrain and only works in that context.
+
+3. The algorithm only considers the elevation difference (dz) and the spatial resolution (dxy) for computing the surface distance, but it does not account for variations in terrain difficulty (e.g., navigating through rough terrain, dense forest, or steep slopes).
+
+Thank you for taking the time to read through my submission.
